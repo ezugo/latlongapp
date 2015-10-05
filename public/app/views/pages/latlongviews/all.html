@@ -1,0 +1,39 @@
+<div class="page-header">
+	<h1>
+		Lat Long Entries 
+		<a href="/listoflatlongs/create" class="btn btn-default">
+			<span class="glyphicon glyphicon-plus"></span> 
+			New Lat Long Program
+		</a>
+	</h1>
+
+</div>
+
+<div class="jumbotron text-center" ng-show="mylatlongprogram.processing">
+	<span class="glyphicon glyphicon-repeat spinner"></span>
+	<p>Loading LatLong Programs...</p>
+</div>
+
+<table class="table table-bordered table-striped" ng-show="mylatlongprogram.getAllLatLongData">
+	<thead>
+		<tr>
+			<th>_id</th>
+			<th>Latitude</th>
+			<th>Longitude</th>
+			<th>ImageURL</th>
+			<th class="col-sm-2"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="alatlong in mylatlongprogram.getAllLatLongData">
+			<td>{{ alatlong._id }}</td>
+			<td>{{ alatlong.lat }}</td>
+			<td>{{ alatlong.long }}</td>
+			<td>{{ alatlong.image_url }}</td>
+			<td class="col-sm-2">
+				<a ng-href="/listoflatlongs/{{ alatlong._id }}" class="btn btn-danger">Edit</a>
+				<a href="#" ng-click="mylatlongprogram.deleteLatLong(alatlong._id)" class="btn btn-primary">Delete</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
